@@ -16,12 +16,6 @@
 Run Docker Compose:
           docker-compose up
 
-Access the application:
-
-Backend: http://localhost:5000
-
-Frontend: http://localhost:3000
-
 Environment Variables
 You may need to update the environment variables in the docker-compose.yml file as per your local setup.
 
