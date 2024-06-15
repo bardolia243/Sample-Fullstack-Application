@@ -10,14 +10,18 @@
 ### Steps
 
 1. Clone the repository:
-   git clone https://github.com/bardolia243/sample-fullstack-application.git
-   cd sample-fullstack-application
+2.   git clone https://github.com/bardolia243/sample-fullstack-application.git
+3.   cd sample-fullstack-application
+ 
 Run Docker Compose:
-docker-compose up
+          docker-compose up
+
 Access the application:
 
 Backend: http://localhost:5000
+
 Frontend: http://localhost:3000
+
 Environment Variables
 You may need to update the environment variables in the docker-compose.yml file as per your local setup.
 
