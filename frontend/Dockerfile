@@ -1,32 +1,23 @@
-# Stage 1: Build the application
-FROM node:18 AS build
+# Use the official Node.js image.
+FROM node:18-alpine
 
 # Set the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
+# Copy package.json and yarn.lock
+COPY package.json package-lock.json ./
 
 # Install dependencies
-RUN npm install
+RUN yarn install
 
 # Copy the rest of the application code
 COPY . .
 
-# Build the application
-RUN npm run build
+# Build the Next.js app
+RUN yarn build
 
-# Stage 2: Serve the application with nginx
-FROM nginx:alpine
+# Expose the port the app runs on
+EXPOSE 3000
 
-# Copy the built files from the previous stage
-COPY --from=build /app/build /usr/share/nginx/html
-
-# Copy nginx configuration file
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expose port 80
-EXPOSE 80
-
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Start the Next.js app
+CMD ["yarn", "start"]
